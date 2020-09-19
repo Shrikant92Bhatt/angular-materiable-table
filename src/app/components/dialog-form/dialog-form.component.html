@@ -1,0 +1,46 @@
+<h2 mat-dialog-title *ngIf="!isNewForm">Edit Account No{{data.actId}}</h2>
+<h2 mat-dialog-title *ngIf="isNewForm">Add new account</h2>
+<mat-dialog-content class="mat-typography">
+
+    <form class="vislean-form" [formGroup]="visLeanForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <mat-form-field class="example-full-width">
+                <mat-label>Account No.</mat-label>
+                <input matInput formControlName="actId" readonly [attr.disabled]="true" placeholder="Account Number">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field class="example-half-width">
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="orgName" placeholder="Organisation Name">
+            </mat-form-field>
+            <mat-form-field class="example-half-width">
+                <mat-label>Owner</mat-label>
+                <input matInput formControlName="owner" placeholder="Owner Name">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field class="example-half-width">
+                <mat-label>Task Name</mat-label>
+                <input matInput formControlName="taskName" placeholder="Task Name">
+            </mat-form-field>
+            <mat-form-field class="example-half-width">
+                <mat-label>Status</mat-label>
+                <input matInput maxlength="2" min="1" max="10" formControlName="status" placeholder="Status"
+                    numbersOnly>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field class="example-full-width">
+                <mat-label>Task Type</mat-label>
+                <input matInput formControlName="taskType" placeholder="Task Type">
+            </mat-form-field>
+        </div>
+
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="visLeanForm.value" cdkFocusInitial
+        [disabled]="!visLeanForm.valid">Save</button>
+</mat-dialog-actions>
